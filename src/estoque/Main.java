@@ -20,52 +20,58 @@ public class Main {
         listaItens [3] = cinto;
         listaItens [4] = saida;
         do{
-            System.out.println("--- MENU DE ESTOQUE ---");
-            for(int i = 0; i < listaItens.length; i++) {
-                System.out.println(i+1 + "- " + listaItens[i].getDescricao());
+            try {
+                System.out.println("--- MENU DE ESTOQUE ---");
+                for (int i = 0; i < listaItens.length; i++) {
+                    System.out.println(i + 1 + "- " + listaItens[i].getDescricao());
+                }
+                System.out.println("6 - Sair");
+
+                System.out.print("Escolha uma opção: ");
+                opcao = sc.nextInt();
+                switch (opcao - 1) {
+                    case 0:
+                        camisa.venda();
+                        camisa.reposicaoEstoque();
+                        camisa.exibirEstoque();
+                        break;
+                    case 1:
+                        saia.venda();
+                        saia.reposicaoEstoque();
+                        saia.exibirEstoque();
+                        break;
+                    case 2:
+                        pulseira.venda();
+                        pulseira.reposicaoEstoque();
+                        pulseira.exibirEstoque();
+                        break;
+                    case 3:
+                        cinto.venda();
+                        cinto.reposicaoEstoque();
+                        cinto.exibirEstoque();
+                        break;
+                    case 4:
+                        saida.venda();
+                        saida.reposicaoEstoque();
+                        saida.exibirEstoque();
+                        break;
+                    case 5:
+                        System.out.println("Encerrando o programa...");
+
+                        System.out.println("--- RELATORIO DE ESTOQUE ---");
+                        for (int i = 0; i < listaItens.length; i++) {
+                            listaItens[i].exibirEstoque();
+                        }
+                        break;
+
+                    default:
+                        System.out.println("Opção inválida!");
+                }
+            }catch (Exception e) {
+                System.out.println("ERRO: Por favor, digite apenas um número inteiro válido!");
+                sc.nextLine();
+                opcao = 0;
             }
-            System.out.println("6 - Sair");
-
-            System.out.print("Escolha uma opção: ");
-            opcao = sc.nextInt();
-            switch (opcao - 1) {
-                case 0:
-                    camisa.venda();
-                    camisa.reposicaoEstoque();
-                    camisa.exibirEstoque();
-                    break;
-                case 1:
-                    saia.venda();
-                    saia.reposicaoEstoque();
-                    saia.exibirEstoque();
-                    break;
-                case 2:
-                    pulseira.venda();
-                    pulseira.reposicaoEstoque();
-                    pulseira.exibirEstoque();
-                    break;
-                case 3:
-                    cinto.venda();
-                    cinto.reposicaoEstoque();
-                    cinto.exibirEstoque();
-                    break;
-                case 4:
-                    saida.venda();
-                    saida.reposicaoEstoque();
-                    saida.exibirEstoque();
-                    break;
-                case 5:
-                    System.out.println("Encerrando o programa...");
-
-                    System.out.println("--- RELATORIO DE ESTOQUE ---");
-                    for (int i = 0; i < listaItens.length; i++) {
-                        listaItens[i].exibirEstoque();
-                    }
-                    break;
-
-                default:
-                    System.out.println("Opção inválida!");
-        }
         }
         while(opcao != 6);
 
